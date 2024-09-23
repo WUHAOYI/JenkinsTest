@@ -30,9 +30,12 @@ pipeline {
             steps {
                 // 使用 SCP 或 SSH 将打包的文件传输到远程服务器
                 sh '''
-                    scp -o StrictHostKeyChecking=no target/JenkinsTest.jar ubuntu@aws001:/opt/module
-                    ssh -o StrictHostKeyChecking=no ubuntu@aws001 'nohup java -jar /opt/module/JenkinsTest.jar > /dev/null 2>&1 &'
-                '''
+                        ssh -o StrictHostKeyChecking=no ubuntu@aws001 'pkill -f JenkinsTest.jar || true'
+
+                        scp -o StrictHostKeyChecking=no target/JenkinsTest.jar ubuntu@aws001:/opt/module
+
+                        ssh -o StrictHostKeyChecking=no ubuntu@aws001 'nohup java -jar /opt/module/JenkinsTest.jar > /dev/null 2>&1 &'
+                    '''
             }
         }
     }
