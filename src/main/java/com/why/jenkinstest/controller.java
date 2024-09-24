@@ -14,6 +14,6 @@ public class controller {
     @GetMapping("/hello")
     public String HelloWorld()
     {
-        return "hello world 123";
+        return "hello world 2024.09.24";
     }
 }
