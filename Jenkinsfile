@@ -3,8 +3,8 @@ pipeline {
 
     environment {
         // 定义环境变量
-        SERVER_IP = aws001        					// 服务器IP地址
-        SERVER_USER = ubuntu    					// 服务器用户名
+        SERVER_IP = 'aws001'        				// 服务器IP地址
+        SERVER_USER = 'ubuntu'    					// 服务器用户名
         TARGET_DIR = '/opt/module'                  // 服务器上的目标目录
         JAR_FILE = 'JenkinsTest.jar'                // 打包后的文件名
     }
