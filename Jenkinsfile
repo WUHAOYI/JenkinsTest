@@ -19,9 +19,12 @@ pipeline {
         }
         stage('Build Project') {
             steps {
-                // 使用 Maven 构建项目
-                sh 'mvn clean package -DskipTests'
-            }
+                ansiColor('xterm')
+                    {
+                        // 使用 Maven 构建项目
+                        sh 'mvn clean package -DskipTests'
+                    }
+                    }
         }
         stage('Verify Build Output') {
             // 验证构建结果
@@ -30,9 +33,11 @@ pipeline {
             }
         }
         stage('Test') {
-            steps {
-                // 运行测试
-                sh 'mvn test'
+            ansiColor('xterm') {
+                steps {
+                      // 运行测试
+                      sh 'mvn test'
+                }
             }
         }
         stage('Deploy') {
