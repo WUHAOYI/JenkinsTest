@@ -24,7 +24,7 @@ pipeline {
                         // 使用 Maven 构建项目
                         sh 'mvn clean package -DskipTests'
                     }
-                    }
+            }
         }
         stage('Verify Build Output') {
             // 验证构建结果
@@ -33,8 +33,8 @@ pipeline {
             }
         }
         stage('Test') {
-            ansiColor('xterm') {
-                steps {
+            steps {
+                ansiColor('xterm') {
                       // 运行测试
                       sh 'mvn test'
                 }
